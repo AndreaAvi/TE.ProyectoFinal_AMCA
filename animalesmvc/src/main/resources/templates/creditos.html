@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- NAVBAR GRAL-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar-general">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="https://github.com/AndreaAvi/TE.ProyectoFinal_AMCA">Animales por el Mundo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/home/}">Inicio</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- PORTADA -->
+<main class="flex-fill d-flex justify-content-center align-items-center"
+      style="background-image: url('/img/fondo-portada.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;">
+    <div class="p-5 shadow-lg rounded-4 bg-white text-center" style="max-width: 850px; width: 100%; background-color: rgba(255,255,255,0.95);">
+
+        <!-- Logos y encabezado -->
+        <div class="d-flex align-items-center justify-content-center gap-5 mb-4">
+            <img src="/img/logo-unam.svg" alt="Logo UNAM" style="height: 90px;">
+
+            <div class="text-center" style="font-size: 0.9rem;">
+                <strong>Universidad Nacional Autónoma de México</strong><br>
+                <span style="font-weight: bold;">Facultad de Estudios Superiores Aragón</span><br>
+                Ingeniería en Computación
+            </div>
+
+            <img src="/img/logo-andrea.png" alt="Logo Andrea" style="height: 110px;">
+        </div>
+
+
+        <!-- Título -->
+        <h1 class="mb-2" style="color: #e255b4; font-size: 2.5rem; font-weight: 700;">
+            Animales por el Mundo
+        </h1>
+        <h2 class="mb-4" style="font-size: 1rem; color: #60a0e0;">
+            Proyecto Final · Sistema CRUD de Animales · Spring MVC
+        </h2>
+
+        <!-- Datos -->
+        <div class="text-start mx-auto" style="max-width: 600px; font-size: 1rem;">
+            <p><strong>Materia:</strong> Temas especiales de computación 1</p>
+            <p><strong>Profesor:</strong> Mtro. Jesús Hernández Cabrera</p>
+            <p><strong>Alumna:</strong> Cáceres Avitia Andrea Marcela – 319017517</p>
+            <p><strong>Grupo:</strong> 2012</p>
+            <p><strong>Semestre:</strong> 2025-II</p>
+            <p><strong>Fecha de entrega:</strong> 5 de junio de 2025</p>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>
