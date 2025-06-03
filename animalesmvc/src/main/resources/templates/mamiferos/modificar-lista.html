@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+    <meta charset="UTF-8">
+    <title>Seleccionar Mamífero a Modificar</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="creditos :: navbar-general"></nav>
+
+<main class="container my-4">
+    <h1 class="mb-4 text-center">Selecciona un mamífero para modificar</h1>
+    <p class="text-success text-center" th:if="${param.exito}">
+        Mamífero modificado exitosamente.
+    </p>
+    <hr>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" th:each="mamifero : ${mamiferos}">
+            <div class="card h-100 d-flex flex-column">
+                <img th:src="${mamifero.imagen}" class="card-img-top" th:alt="'Imagen de ' + ${mamifero.especie}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-center" th:text="${mamifero.especie}"></h5>
+                    <p class="card-text text-start">
+                        <strong>Tamaño promedio:</strong> <span th:text="${mamifero.tamanioPromedio} + ' m'"></span><br/>
+                        <strong>Hábitat:</strong> <span th:text="${mamifero.habitat}"></span><br/>
+                        <strong>Tipo de alimentación:</strong> <span th:text="${mamifero.tipoAlimentacion}"></span><br/>
+                        <strong>Zona geográfica:</strong> <span th:text="${mamifero.zonaGeografica}"></span><br/>
+                        <strong>Esperanza de vida:</strong> <span th:text="${mamifero.esperanzaVida} + ' años'"></span><br/>
+                        <strong>Estado de conservación:</strong> <span th:text="${mamifero.estadoConservacion}"></span><br/>
+                    </p>
+
+                    <!-- Botón de información arriba -->
+                    <a th:href="${mamifero.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
+                        Más información
+                    </a>
+
+                    <!-- Botón modificar abajo, resaltado -->
+                    <a th:href="@{'/mamiferos/modificar/' + ${mamifero.id}}"
+                       class="btn btn-warning w-100 mt-auto">
+                        Modificar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>

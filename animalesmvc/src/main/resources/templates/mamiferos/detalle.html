@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+    <meta charset="UTF-8">
+    <title>Mamífero</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="creditos :: navbar-general"></nav>
+
+<main class="container my-4 d-flex flex-column align-items-center">
+    <h1 class="mb-4 text-center">Mamíferos</h1>
+    <div class="card" style="width: 18rem;">
+        <img th:src="${mamifero.imagen}" class="card-img-top" th:alt="'Imagen de ' + ${mamifero.especie}">
+        <div class="card-body text-center">
+            <h5 class="card-title" th:text="${mamifero.especie}"></h5>
+            <p class="card-text text-start">
+                <strong>Tamaño promedio:</strong> <span th:text="${mamifero.tamanioPromedio} + ' m'"></span><br/>
+                <strong>Hábitat:</strong> <span th:text="${mamifero.habitat}"></span><br/>
+                <strong>Tipo de alimentación:</strong> <span th:text="${mamifero.tipoAlimentacion}"></span><br/>
+                <strong>Zona geográfica:</strong> <span th:text="${mamifero.zonaGeografica}"></span><br/>
+                <strong>Esperanza de vida:</strong> <span th:text="${mamifero.esperanzaVida} + ' años'"></span><br/>
+                <strong>Estado de conservación:</strong> <span th:text="${mamifero.estadoConservacion}"></span><br/>
+            </p>
+            <a th:href="${mamifero.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
+                Más información
+            </a>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>

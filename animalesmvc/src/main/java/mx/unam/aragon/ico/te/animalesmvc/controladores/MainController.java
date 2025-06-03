@@ -11,12 +11,12 @@ public class MainController {
     // Página principal
     @GetMapping("/")
     public String obtenerInicial() {
-        return "index";  // Thymeleaf buscará src/main/resources/templates/index.html
+        return "index";
     }
 
     // Página de créditos (Portada)
     @GetMapping("/creditos")
     public String obtenerCreditos() {
-        return "creditos"; // src/main/resources/templates/creditos.html
+        return "creditos";
     }
 }
