@@ -1,22 +1,46 @@
 package mx.unam.aragon.ico.te.animalesmvc.modelos;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "mamiferos")
 public class Mamifero {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(length = 100, nullable = false)
     private String especie;
+
+    @Column(name = "tamanio_promedio", nullable = false)
     private double tamanioPromedio; // en metros
+
+    @Column(length = 100)
     private String habitat; // tipo de hábitat (selva, sabana, etc.)
+
+    @Column(name = "tipo_alimentacion", length = 50)
     private String tipoAlimentacion;
+
+    @Column(name = "zona_geografica", length = 100)
     private String zonaGeografica;
+
+    @Column(name = "esperanza_vida")
     private int esperanzaVida; // en años
+
+    @Column(name = "estado_conservacion", length = 50)
     private String estadoConservacion;
+
+    @Column(name = "url_informacion", length = 255)
     private String urlInformacion;
+
+    @Column(length = 255)
     private String imagen; // ruta o URL a imagen
 
     public Mamifero() {
     }
 
-    public Mamifero(int id, String especie, double tamanioPromedio, String habitat,
+    public Mamifero(Integer id, String especie, double tamanioPromedio, String habitat,
                     String tipoAlimentacion, String zonaGeografica,
                     int esperanzaVida, String estadoConservacion, String urlInformacion, String imagen) {
         this.id = id;
@@ -31,13 +55,13 @@ public class Mamifero {
         this.imagen = imagen;
     }
 
-    // Getters y setters
+    // Getters y Setters
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
