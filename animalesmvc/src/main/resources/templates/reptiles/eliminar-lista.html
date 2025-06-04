@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+    <meta charset="UTF-8">
+    <title>Seleccionar Reptil a Eliminar</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="creditos :: navbar-general"></nav>
+
+<main class="container my-4">
+    <h1 class="mb-4 text-center">Selecciona un reptil para eliminar</h1>
+    <p class="text-danger text-center" th:if="${param.exito}">
+        Reptil eliminado exitosamente.
+    </p>
+    <hr>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" th:each="reptil : ${reptiles}">
+            <div class="card h-100 d-flex flex-column">
+                <img th:src="${reptil.imagen}" class="card-img-top" th:alt="'Imagen de ' + ${reptil.especie}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-center" th:text="${reptil.especie}"></h5>
+                    <p class="card-text text-start">
+                        <strong>Longitud promedio:</strong> <span th:text="${reptil.longitudPromedio} + ' m'"></span><br/>
+                        <strong>Hábitat:</strong> <span th:text="${reptil.habitat}"></span><br/>
+                        <strong>Tipo de alimentación:</strong> <span th:text="${reptil.tipoAlimentacion}"></span><br/>
+                        <strong>Zona geográfica:</strong> <span th:text="${reptil.zonaGeografica}"></span><br/>
+                        <strong>Esperanza de vida:</strong> <span th:text="${reptil.esperanzaVida} + ' años'"></span><br/>
+                        <strong>Estado de conservación:</strong> <span th:text="${reptil.estadoConservacion}"></span><br/>
+                        <strong>Es venenoso:</strong> <span th:text="${reptil.esVenenoso} ? 'Sí' : 'No'"></span><br/>
+                        <strong>Es ovíparo:</strong> <span th:text="${reptil.esOviparo} ? 'Sí' : 'No'"></span><br/>
+                    </p>
+                    <a th:href="${reptil.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
+                        Más información
+                    </a>
+                    <!-- Botón de eliminar al final, resaltado -->
+                    <form th:action="@{'/reptiles/eliminar/' + ${reptil.id}}" method="post" class="mt-auto">
+                        <button type="submit" class="btn btn-danger w-100">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>

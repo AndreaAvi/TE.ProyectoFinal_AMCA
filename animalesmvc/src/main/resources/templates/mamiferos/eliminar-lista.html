@@ -30,19 +30,16 @@
                     <a th:href="${mamifero.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
                         Más información
                     </a>
-
                     <!-- Botón de eliminar al final, resaltado -->
                     <form th:action="@{'/mamiferos/eliminar/' + ${mamifero.id}}" method="post" class="mt-auto">
                         <button type="submit" class="btn btn-danger w-100">Eliminar</button>
                     </form>
                 </div>
             </div>
-
         </div>
         </div>
     </div>
 </main>
-
 <footer th:replace="index :: footer"></footer>
 <div th:replace="index :: jsincludes"></div>
 </body>
