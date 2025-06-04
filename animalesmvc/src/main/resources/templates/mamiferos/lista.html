@@ -15,7 +15,7 @@
     <hr>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col" th:each="mamifero : ${mamiferos}">
-            <div class="card h-100">
+            <div class="card h-100 d-flex flex-column">
                 <img th:src="${mamifero.imagen}" class="card-img-top" th:alt="'Imagen de ' + ${mamifero.especie}">
                 <div class="card-body text-center">
                     <h5 class="card-title" th:text="${mamifero.especie}"></h5>

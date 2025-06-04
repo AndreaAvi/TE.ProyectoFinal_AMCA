@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+    <meta charset="UTF-8">
+    <title>Seleccionar Ave a Modificar</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="creditos :: navbar-general"></nav>
+
+<main class="container my-4">
+    <h1 class="mb-4 text-center">Selecciona un ave para modificar</h1>
+    <p class="text-success text-center" th:if="${param.exito}">
+        Ave modificada exitosamente.
+    </p>
+    <hr>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" th:each="ave: ${aves}">
+            <div class="card h-100 d-flex flex-column">
+                <img th:src="${ave.imagen}" class="card-img-top" th:alt="'Imagen de ' + ${ave.especie}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title" th:text="${ave.especie}"></h5>
+                    <p class="card-text text-start">
+                        <strong>Envergadura de alas:</strong> <span th:text="${ave.envergaduraAlas} + ' m'"></span><br/>
+                        <strong>Hábitat:</strong> <span th:text="${ave.habitat}"></span><br/>
+                        <strong>Tipo de alimentación:</strong> <span th:text="${ave.tipoAlimentacion}"></span><br/>
+                        <strong>Zona geográfica:</strong> <span th:text="${ave.zonaGeografica}"></span><br/>
+                        <strong>Esperanza de vida:</strong> <span th:text="${ave.esperanzaVida} + ' años'"></span><br/>
+                        <strong>Estado de conservación:</strong> <span th:text="${ave.estadoConservacion}"></span><br/>
+                        <strong>Vuelo:</strong> <span th:text="${ave.vuelo}"></span><br/>
+                        <strong>Migratoria:</strong> <span th:text="${ave.esMigratoria ? 'Sí' : 'No'}"></span><br/>
+                    </p>
+                    <a th:href="${ave.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
+                        Más información
+                    </a>
+
+                    <!-- Botón modificar abajo, resaltado -->
+                    <a th:href="@{'/aves/modificar/' + ${ave.id}}"
+                       class="btn btn-warning w-100 mt-auto">
+                        Modificar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>
