@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Tarjeta básica -->
+<div th:fragment="tarjeta-anfibio(anfibio)" class="card h-100 d-flex flex-column">
+    <img th:src="${anfibio.imagen}" class="card-img-top" th:alt="'Imagen de ' + ${anfibio.especie}">
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title text-center" th:text="${anfibio.especie}"></h5>
+        <div th:replace="this :: info-anfibio(${anfibio})"></div>
+        <br>
+        <a th:href="${anfibio.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
+            Más información
+        </a>
+        <div th:insert="${botones}"></div>
+    </div>
+</div>
+
+<!-- Fragmento con la info  -->
+<div th:fragment="info-anfibio(anfibio)" class="card-text text-start">
+    <strong>Tamaño promedio:</strong> <span th:text="${anfibio.tamanioPromedio} + ' m'"></span><br/>
+    <strong>Hábitat:</strong> <span th:text="${anfibio.habitat}"></span><br/>
+    <strong>Tipo de alimentación:</strong> <span th:text="${anfibio.tipoAlimentacion}"></span><br/>
+    <strong>Zona geográfica:</strong> <span th:text="${anfibio.zonaGeografica}"></span><br/>
+    <strong>Esperanza de vida:</strong> <span th:text="${anfibio.esperanzaVida} + ' años'"></span><br/>
+    <strong>Estado de conservación:</strong> <span th:text="${anfibio.estadoConservacion}"></span><br/>
+    <strong>Tipo de reproducción:</strong> <span th:text="${anfibio.tipoReproduccion}"></span><br/>
+    <strong>Metamorfosis:</strong>
+    <span th:if="${anfibio.metamorfosis}" class="text-success">✓ Sí</span>
+    <span th:unless="${anfibio.metamorfosis}" class="text-muted">✗ No</span><br/>
+    <strong>Respiración cutánea:</strong>
+    <span th:if="${anfibio.respiracionCutanea}" class="text-success">✓ Sí</span>
+    <span th:unless="${anfibio.respiracionCutanea}" class="text-muted">✗ No</span><br/>
+</div>
+
+<!-- Fragmento de la grid de completa -->
+<div th:fragment="grid-anfibios(anfibios, botones)" class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" th:each="anfibio : ${anfibios}">
+        <div th:replace="this :: tarjeta-anfibio(${anfibio})" th:with="botones=${botones}"></div>
+    </div>
+</div>
+
+<!-- Fragmentos de botones (eliminar y modificar) -->
+<div th:fragment="boton-modificar" class="mt-auto">
+    <a th:href="@{'/anfibios/modificar/' + ${anfibio.id}}"
+       class="btn btn-warning w-100">
+        Modificar
+    </a>
+</div>
+
+<div th:fragment="boton-eliminar" class="mt-auto">
+    <form th:action="@{'/anfibios/eliminar/' + ${anfibio.id}}" method="post">
+        <button type="submit" class="btn btn-danger w-100">Eliminar</button>
+    </form>
+</div>
+
+</body>
+</html>

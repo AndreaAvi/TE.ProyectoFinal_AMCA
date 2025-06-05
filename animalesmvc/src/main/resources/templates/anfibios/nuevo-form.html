@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+    <meta charset="UTF-8">
+    <title>Agregar Anfibio</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="creditos :: navbar-general"></nav>
+
+<main class="flex-fill my-5">
+    <div class="container">
+        <h1 class="mb-4 text-center">Agregar nuevo Anfibio</h1>
+        <hr>
+        <form th:action="@{/anfibios/guardar}" th:object="${anfibio}" th:method="post" class="w-50 mx-auto">
+
+            <div class="mb-3">
+                <label for="especie" class="form-label">Especie</label>
+                <input type="text" class="form-control" id="especie" th:field="*{especie}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="tamanioPromedio" class="form-label">Tamaño Promedio (m)</label>
+                <input type="number" step="0.01" class="form-control" id="tamanioPromedio" th:field="*{tamanioPromedio}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="habitat" class="form-label">Hábitat</label>
+                <input type="text" class="form-control" id="habitat" th:field="*{habitat}">
+            </div>
+
+            <div class="mb-3">
+                <label for="tipoAlimentacion" class="form-label">Tipo de Alimentación</label>
+                <input type="text" class="form-control" id="tipoAlimentacion" th:field="*{tipoAlimentacion}">
+            </div>
+
+            <div class="mb-3">
+                <label for="zonaGeografica" class="form-label">Zona Geográfica</label>
+                <input type="text" class="form-control" id="zonaGeografica" th:field="*{zonaGeografica}">
+            </div>
+
+            <div class="mb-3">
+                <label for="esperanzaVida" class="form-label">Esperanza de Vida (años)</label>
+                <input type="number" class="form-control" id="esperanzaVida" th:field="*{esperanzaVida}">
+            </div>
+
+            <div class="mb-3">
+                <label for="estadoConservacion" class="form-label">Estado de Conservación</label>
+                <input type="text" class="form-control" id="estadoConservacion" th:field="*{estadoConservacion}">
+            </div>
+
+            <div class="mb-3">
+                <label for="tipoReproduccion" class="form-label">Tipo de Reproducción</label>
+                <input type="text" class="form-control" id="tipoReproduccion" th:field="*{tipoReproduccion}" placeholder="ej: ovíparo, vivíparo">
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="metamorfosis" th:field="*{metamorfosis}">
+                    <label class="form-check-label" for="metamorfosis">
+                        Presenta metamorfosis completa
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="respiracionCutanea" th:field="*{respiracionCutanea}">
+                    <label class="form-check-label" for="respiracionCutanea">
+                        Respiración cutánea (respira por la piel)
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="urlInformacion" class="form-label">URL de Más Información</label>
+                <input type="url" class="form-control" id="urlInformacion" th:field="*{urlInformacion}">
+            </div>
+
+            <div class="mb-3">
+                <label for="imagen" class="form-label">URL de Imagen</label>
+                <input type="url" class="form-control" id="imagen" th:field="*{imagen}">
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Agregar Anfibio</button>
+        </form>
+    </div>
+</main>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+    <meta charset="UTF-8">
+    <title>Seleccionar Anfibio a Eliminar</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="creditos :: navbar-general"></nav>
+
+<main class="container my-4">
+    <h1 class="mb-4 text-center">Selecciona un anfibio para eliminar</h1>
+    <p class="text-danger text-center" th:if="${param.exito}">
+        Anfibio eliminado exitosamente.
+    </p>
+    <hr>
+    <!-- Fragmento con el botón de eliminar -->
+    <div th:replace="fragments/anfibio-card :: grid-anfibios(${anfibios}, ~{fragments/anfibio-card :: boton-eliminar})"></div>
+</main>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>

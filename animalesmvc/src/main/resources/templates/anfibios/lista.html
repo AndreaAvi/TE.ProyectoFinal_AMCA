@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+    <meta charset="UTF-8">
+    <title>Lista de Anfibios</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="creditos :: navbar-general"></nav>
+
+<main class="container my-4">
+    <h1 class="mb-4 text-center">Anfibios</h1>
+    <p class="text-success text-center" th:if="${param.exito}">
+        Anfibio dado de alta exitosamente.
+    </p>
+    <hr>
+    <!-- fragmento sin botones de CRUD, en grid, recibe el parámetro de la lista-->
+    <div th:replace="fragments/anfibio-card :: grid-anfibios(${anfibios}, ~{})"></div>
+</main>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>

@@ -26,8 +26,12 @@
                         <strong>Zona geográfica:</strong> <span th:text="${reptil.zonaGeografica}"></span><br/>
                         <strong>Esperanza de vida:</strong> <span th:text="${reptil.esperanzaVida} + ' años'"></span><br/>
                         <strong>Estado de conservación:</strong> <span th:text="${reptil.estadoConservacion}"></span><br/>
-                        <strong>Es venenoso:</strong> <span th:text="${reptil.esVenenoso} ? 'Sí' : 'No'"></span><br/>
-                        <strong>Es ovíparo:</strong> <span th:text="${reptil.esOviparo} ? 'Sí' : 'No'"></span><br/>
+                        <strong>Es venenoso:</strong>
+                        <span th:if="${reptil.esVenenoso}" class="text-success">✓ Sí</span>
+                        <span th:unless="${reptil.esVenenoso}" class="text-muted">✗ No</span><br/>
+                        <strong>Es ovíparo:</strong>
+                        <span th:if="${reptil.esOviparo}" class="text-success">✓ Sí</span>
+                        <span th:unless="${reptil.esOviparo}" class="text-muted">✗ No</span><br/>
                     </p>
                     <a th:href="${reptil.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
                         Más información

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- menú CRUD completo -->
+<main th:fragment="menu-crud(tipo, color, imagen, descripcion)"
+      class="flex-fill d-flex justify-content-center align-items-center"
+      th:style="'background-image: url(' + ${imagen} + '); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;'">
+
+    <div class="p-5 shadow-lg rounded-4 text-center"
+         style="max-width: 750px; width: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);">
+
+        <h1 class="mb-4"
+            th:text="'Menú de ' + ${#strings.capitalize(tipo)}"
+            th:style="'color: ' + ${color} + '; font-size: 2.2rem; font-weight: 700;'">
+        </h1>
+        <p class="mb-4" style="font-size: 1rem; color: #333;" th:text="${descripcion}"></p>
+
+        <!-- Botones de acciones-->
+        <div class="d-flex flex-column gap-3 mx-auto" style="max-width: 300px;">
+            <a class="btn btn-outline-success btn-lg" th:href="@{'/' + ${tipo} + '/nuevo'}">Nuevo</a>
+            <a class="btn btn-outline-primary btn-lg" th:href="@{'/' + ${tipo} + '/lista'}">Lista</a>
+            <a class="btn btn-outline-warning btn-lg" th:href="@{'/' + ${tipo} + '/modificar-lista'}">Modificar</a>
+            <a class="btn btn-outline-danger btn-lg" th:href="@{'/' + ${tipo} + '/eliminar-lista'}">Borrar</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
