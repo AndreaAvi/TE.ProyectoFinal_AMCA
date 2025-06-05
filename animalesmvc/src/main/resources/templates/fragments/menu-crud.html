@@ -3,7 +3,7 @@
 <body>
 
 <!-- menú CRUD completo -->
-<main th:fragment="menu-crud(tipo, color, imagen, descripcion)"
+<main th:fragment="menu-crud(titulo, tipo, color, imagen, descripcion)"
       class="flex-fill d-flex justify-content-center align-items-center"
       th:style="'background-image: url(' + ${imagen} + '); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;'">
 
@@ -14,7 +14,7 @@
             -webkit-backdrop-filter: blur(5px);">
 
         <h1 class="mb-4"
-            th:text="'Menú de ' + ${#strings.capitalize(tipo)}"
+            th:text="'Menú de ' + ${#strings.capitalize(titulo)}"
             th:style="'color: ' + ${color} + '; font-size: 2.2rem; font-weight: 700;'">
         </h1>
         <p class="mb-4" style="font-size: 1rem; color: #333;" th:text="${descripcion}"></p>
