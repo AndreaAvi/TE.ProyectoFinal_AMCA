@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!--formulario completo del mamífero -->
+<div th:fragment="formulario-mamifero(accion, titulo, botonTexto, botonClase)" class="container">
+    <h1 class="mb-4 text-center" th:text="${titulo}">Título del formulario</h1>
+    <hr th:if="${titulo == 'Agregar nuevo Mamífero'}">
+
+    <form th:action="${accion}" th:object="${mamifero}" th:method="post" class="w-50 mx-auto">
+
+        <!-- Campo oculto para ID solo en modificación -->
+        <input type="hidden" th:field="*{id}" th:if="${mamifero.id != null}"/>
+
+        <div class="mb-3">
+            <label for="especie" class="form-label">Especie</label>
+            <input type="text" class="form-control" id="especie" th:field="*{especie}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="tamanioPromedio" class="form-label">Tamaño Promedio (m)</label>
+            <input type="number" step="0.01" class="form-control" id="tamanioPromedio" th:field="*{tamanioPromedio}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="habitat" class="form-label">Hábitat</label>
+            <input type="text" class="form-control" id="habitat" th:field="*{habitat}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="tipoAlimentacion" class="form-label">Tipo de Alimentación</label>
+            <input type="text" class="form-control" id="tipoAlimentacion" th:field="*{tipoAlimentacion}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="zonaGeografica" class="form-label">Zona Geográfica</label>
+            <input type="text" class="form-control" id="zonaGeografica" th:field="*{zonaGeografica}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="esperanzaVida" class="form-label">Esperanza de Vida (años)</label>
+            <input type="number" class="form-control" id="esperanzaVida" th:field="*{esperanzaVida}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="estadoConservacion" class="form-label">Estado de Conservación</label>
+            <input type="text" class="form-control" id="estadoConservacion" th:field="*{estadoConservacion}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="urlInformacion" class="form-label">URL de Más Información</label>
+            <input type="url" class="form-control" id="urlInformacion" th:field="*{urlInformacion}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="imagen" class="form-label">URL de Imagen</label>
+            <input type="url" class="form-control" id="imagen" th:field="*{imagen}" required>
+        </div>
+
+        <button type="submit" class="btn w-100" th:class="'btn w-100 ' + ${botonClase}" th:text="${botonTexto}">Enviar</button>
+    </form>
+</div>
+
+</body>
+</html>
