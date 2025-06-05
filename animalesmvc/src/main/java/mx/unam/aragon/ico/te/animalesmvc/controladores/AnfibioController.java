@@ -16,6 +16,7 @@ import java.util.List;
  * Clase: AnfibioController.java
  * Descripción: Clase controladora responsable de gestionar las solicitudes relacionadas con "Anfibios".
  * Proporciona endpoints para operaciones CRUD y funcionalidades como renderizar páginas de menú y listar.
+ * Proporciona un manejo de errores simple.
  */
 
 @Controller
