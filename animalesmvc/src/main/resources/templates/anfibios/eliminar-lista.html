@@ -14,7 +14,8 @@
     </p>
     <hr>
     <!-- Fragmento con el botón de eliminar -->
-    <div th:replace="fragments/anfibio-card :: grid-anfibios(${anfibios}, ~{fragments/anfibio-card :: boton-eliminar})"></div>
+    <div th:replace="fragments/anfibio-card :: grid-anfibios(${anfibios}, ~{fragments/anfibio-card :: boton-eliminar})">
+    </div>
 </main>
 
 <footer th:replace="index :: footer"></footer>

@@ -13,40 +13,8 @@
         Reptil modificado exitosamente.
     </p>
     <hr>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col" th:each="reptil : ${reptiles}">
-            <div class="card h-100 d-flex flex-column">
-                <img th:src="${reptil.imagen}" class="card-img-top" th:alt="'Imagen de ' + ${reptil.especie}">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title text-center" th:text="${reptil.especie}"></h5>
-                    <p class="card-text text-start">
-                        <strong>Longitud promedio:</strong> <span th:text="${reptil.longitudPromedio} + ' m'"></span><br/>
-                        <strong>Hábitat:</strong> <span th:text="${reptil.habitat}"></span><br/>
-                        <strong>Tipo de alimentación:</strong> <span th:text="${reptil.tipoAlimentacion}"></span><br/>
-                        <strong>Zona geográfica:</strong> <span th:text="${reptil.zonaGeografica}"></span><br/>
-                        <strong>Esperanza de vida:</strong> <span th:text="${reptil.esperanzaVida} + ' años'"></span><br/>
-                        <strong>Estado de conservación:</strong> <span th:text="${reptil.estadoConservacion}"></span><br/>
-                        <strong>Es venenoso:</strong>
-                        <span th:if="${reptil.esVenenoso}" class="text-success">✓ Sí</span>
-                        <span th:unless="${reptil.esVenenoso}" class="text-muted">✗ No</span><br/>
-                        <strong>Es ovíparo:</strong>
-                        <span th:if="${reptil.esOviparo}" class="text-success">✓ Sí</span>
-                        <span th:unless="${reptil.esOviparo}" class="text-muted">✗ No</span><br/>
-                    </p>
-
-                    <!-- Botón de información arriba -->
-                    <a th:href="${reptil.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
-                        Más información
-                    </a>
-
-                    <!-- Botón modificar abajo, resaltado -->
-                    <a th:href="@{'/reptiles/modificar/' + ${reptil.id}}"
-                       class="btn btn-warning w-100 mt-auto">
-                        Modificar
-                    </a>
-                </div>
-            </div>
-        </div>
+    <!-- Fragmento con el botón de modificar -->
+    <div th:replace="fragments/reptil-card :: grid-reptiles(${reptiles}, ~{fragments/reptil-card :: boton-modificar})">
     </div>
 </main>
 
