@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+    <meta charset="UTF-8">
+    <title>Agregar Pez</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="creditos :: navbar-general"></nav>
+
+<main class="flex-fill my-5">
+    <div th:replace="fragments/pez-form :: formulario-pez(
+        @{/peces/guardar},
+        'Agregar nuevo Pez',
+        'Agregar Pez',
+        'btn-success'
+    )"></div>
+</main>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>

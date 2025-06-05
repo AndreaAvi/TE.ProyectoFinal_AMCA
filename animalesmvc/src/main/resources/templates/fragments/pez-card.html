@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Tarjeta básica -->
+<div th:fragment="tarjeta-pez(pez)" class="card h-100 d-flex flex-column">
+    <img th:src="${pez.imagen}" class="card-img-top" th:alt="'Imagen de ' + ${pez.especie}">
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title text-center" th:text="${pez.especie}"></h5>
+        <div th:replace="this :: info-pez(${pez})"></div>
+        <br>
+        <a th:href="${pez.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
+            Más información
+        </a>
+        <div th:insert="${botones}"></div>
+    </div>
+</div>
+
+<!-- Fragmento con la info  -->
+<div th:fragment="info-pez(pez)" class="card-text text-start">
+    <strong>Tamaño promedio:</strong> <span th:text="${pez.tamanioPromedio} + ' m'"></span><br/>
+    <strong>Hábitat:</strong> <span th:text="${pez.habitat}"></span><br/>
+    <strong>Tipo de alimentación:</strong> <span th:text="${pez.tipoAlimentacion}"></span><br/>
+    <strong>Zona geográfica:</strong> <span th:text="${pez.zonaGeografica}"></span><br/>
+    <strong>Esperanza de vida:</strong> <span th:text="${pez.esperanzaVida} + ' años'"></span><br/>
+    <strong>Estado de conservación:</strong> <span th:text="${pez.estadoConservacion}"></span><br/>
+    <strong>Tipo de agua:</strong> <span th:text="${pez.tipoAgua}"></span><br/>
+    <strong>Profundidad máxima:</strong> <span th:text="${pez.profundidadMaxima} + ' m'"></span><br/>
+    <strong>Forma del cuerpo:</strong> <span th:text="${pez.formaCuerpo}"></span><br/>
+    <strong>Es venenoso:</strong>
+    <span th:if="${pez.esVenenoso}" class="text-success">✓ Sí</span>
+    <span th:unless="${pez.esVenenoso}" class="text-muted">✓ No</span><br/>
+</div>
+
+<!-- Fragmento de la grid de completa -->
+<div th:fragment="grid-peces(peces, botones)" class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" th:each="pez : ${peces}">
+        <div th:replace="this :: tarjeta-pez(${pez})" th:with="botones=${botones}"></div>
+    </div>
+</div>
+
+<!-- Fragmentos de botones (eliminar y modificar) -->
+<div th:fragment="boton-modificar" class="mt-auto">
+    <a th:href="@{'/peces/modificar/' + ${pez.id}}"
+       class="btn btn-warning w-100">
+        Modificar
+    </a>
+</div>
+
+<div th:fragment="boton-eliminar" class="mt-auto">
+    <form th:action="@{'/peces/eliminar/' + ${pez.id}}" method="post">
+        <button type="submit" class="btn btn-danger w-100">Eliminar</button>
+    </form>
+</div>
+
+</body>
+</html>

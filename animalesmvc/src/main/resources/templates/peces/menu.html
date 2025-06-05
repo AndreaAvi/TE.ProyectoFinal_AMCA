@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head"></head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="creditos :: navbar-general"></nav>
+<div th:replace="fragments/menu-crud :: menu-crud(
+    'peces',
+    'peces',
+    '#c62761',
+    '/img/fondo-peces.jpg',
+    'Selecciona una acción para manipular la información de peces.'
+)"></div>
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>
