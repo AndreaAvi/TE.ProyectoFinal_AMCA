@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Tarjeta básica -->
+<div th:fragment="tarjeta-ave(ave)" class="card h-100 d-flex flex-column">
+    <img th:src="${ave.imagen}" class="card-img-top" th:alt="'Imagen de ' + ${ave.especie}">
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title text-center" th:text="${ave.especie}"></h5>
+        <div th:replace="this :: info-ave(${ave})"></div>
+        <br>
+        <a th:href="${ave.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
+            Más información
+        </a>
+        <div th:insert="${botones}"></div>
+    </div>
+</div>
+
+<!-- Fragmento con la info  -->
+<div th:fragment="info-ave(ave)" class="card-text text-start">
+    <strong>Envergadura de alas:</strong> <span th:text="${ave.envergaduraAlas} + ' m'"></span><br/>
+    <strong>Hábitat:</strong> <span th:text="${ave.habitat}"></span><br/>
+    <strong>Tipo de alimentación:</strong> <span th:text="${ave.tipoAlimentacion}"></span><br/>
+    <strong>Zona geográfica:</strong> <span th:text="${ave.zonaGeografica}"></span><br/>
+    <strong>Esperanza de vida:</strong> <span th:text="${ave.esperanzaVida} + ' años'"></span><br/>
+    <strong>Estado de conservación:</strong> <span th:text="${ave.estadoConservacion}"></span><br/>
+    <strong>Vuelo:</strong> <span th:text="${ave.vuelo}"></span><br/>
+    <strong>Migratoria:</strong>
+    <span th:if="${ave.esMigratoria}" class="text-success">✓ Sí</span>
+    <span th:unless="${ave.esMigratoria}" class="text-muted">✗ No</span><br/>
+</div>
+
+<!-- Fragmento de la grid completa -->
+<div th:fragment="grid-aves(aves, botones)" class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" th:each="ave : ${aves}">
+        <div th:replace="this :: tarjeta-ave(${ave})" th:with="botones=${botones}"></div>
+    </div>
+</div>
+
+<!-- Fragmentos de botones (eliminar y modificar) -->
+<div th:fragment="boton-modificar" class="mt-auto">
+    <a th:href="@{'/aves/modificar/' + ${ave.id}}"
+       class="btn btn-warning w-100">
+        Modificar
+    </a>
+</div>
+
+<div th:fragment="boton-eliminar" class="mt-auto">
+    <form th:action="@{'/aves/eliminar/' + ${ave.id}}" method="post">
+        <button type="submit" class="btn btn-danger w-100">Eliminar</button>
+    </form>
+</div>
+
+</body>
+</html>
