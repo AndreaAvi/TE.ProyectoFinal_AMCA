@@ -24,7 +24,13 @@
 
         <div class="mb-3">
             <label for="tipoAlimentacion" class="form-label">Tipo de Alimentación</label>
-            <input type="text" class="form-control" id="tipoAlimentacion" th:field="*{tipoAlimentacion}" required>
+            <select class="form-control" id="tipoAlimentacion" th:field="*{tipoAlimentacion}">
+                <option value="">Seleccionar...</option>
+                <option value="Carnívoro">Carnívoro</option>
+                <option value="Herbívoro">Herbívoro</option>
+                <option value="Omnívoro">Omnívoro</option>
+                <option value="Frugívoro">Frugívoro</option>
+            </select>
         </div>
 
         <div class="mb-3">
