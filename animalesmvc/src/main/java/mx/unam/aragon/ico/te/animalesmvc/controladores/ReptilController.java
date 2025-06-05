@@ -46,7 +46,7 @@ public class ReptilController {
     // READ del CRUD
     @GetMapping("/lista")
     public String listaReptiles(Model model) {
-        // Simulación previa:
+        // Ejemplos para agregar/borrar
         /*
         List<Reptil> reptiles = List.of(
                 new Reptil(1, "Iguana verde (Iguana iguana)", "Selvas tropicales", "Herbívoro", "América Central y del Sur", 20, "Preocupación menor", false, true, 1.5, "https://es.wikipedia.org/wiki/Iguana_iguana", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBkFwed2xvGNpv05SR-q6UKGLREtHCK7zVqQ&s"),
@@ -82,22 +82,6 @@ public class ReptilController {
     // UPDATE del CRUD
     @GetMapping("/modificar/{id}")
     public String mostrarFormularioModificacion(@PathVariable int id, Model model) {
-        // Simulación previa
-        /*
-        Reptil reptil = new Reptil(
-                id,
-                "Pitón birmana (Python bivittatus)",
-                "Bosques tropicales y pantanos",
-                "Carnívoro",
-                "Sudeste asiático",
-                20,
-                "Vulnerable",
-                false,
-                true,
-                5.74,
-                "https://es.wikipedia.org/wiki/Python_bivittatus",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk1HIbd9gpKbrziyy3f0jC1kbIvcP23CIPbQ&s"
-        );*/
         try {
             Reptil reptil = reptilService.buscarPorId(id);
             model.addAttribute("reptil", reptil);
