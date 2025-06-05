@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <body>
+
+<!-- Tarjeta básica -->
+<div th:fragment="tarjeta-mamifero(mamifero)" class="card h-100 d-flex flex-column">
+    <img th:src="${mamifero.imagen}" class="card-img-top" th:alt="'Imagen de ' + ${mamifero.especie}">
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title text-center" th:text="${mamifero.especie}"></h5>
+        <div th:replace="this :: info-mamifero(${mamifero})"></div>
+        <br>
+        <a th:href="${mamifero.urlInformacion}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
+            Más información
+        </a>
+        <div th:insert="${botones}"></div>
+    </div>
+</div>
+
+<!-- Fragmento con la info  -->
+<div th:fragment="info-mamifero(mamifero)" class="card-text text-start">
+    <strong>Tamaño promedio:</strong> <span th:text="${mamifero.tamanioPromedio} + ' m'"></span><br/>
+    <strong>Hábitat:</strong> <span th:text="${mamifero.habitat}"></span><br/>
+    <strong>Tipo de alimentación:</strong> <span th:text="${mamifero.tipoAlimentacion}"></span><br/>
+    <strong>Zona geográfica:</strong> <span th:text="${mamifero.zonaGeografica}"></span><br/>
+    <strong>Esperanza de vida:</strong> <span th:text="${mamifero.esperanzaVida} + ' años'"></span><br/>
+    <strong>Estado de conservación:</strong> <span th:text="${mamifero.estadoConservacion}"></span><br/>
+</div>
+
+<!-- Fragmento de la grid completa -->
+<div th:fragment="grid-mamiferos(mamiferos, botones)" class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" th:each="mamifero : ${mamiferos}">
+        <div th:replace="this :: tarjeta-mamifero(${mamifero})" th:with="botones=${botones}"></div>
+    </div>
+</div>
+
+<!-- Fragmentos de botones (eliminar y modificar) -->
+<div th:fragment="boton-modificar" class="mt-auto">
+    <a th:href="@{'/mamiferos/modificar/' + ${mamifero.id}}"
+       class="btn btn-warning w-100">
+        Modificar
+    </a>
+</div>
+
+<div th:fragment="boton-eliminar" class="mt-auto">
+    <form th:action="@{'/mamiferos/eliminar/' + ${mamifero.id}}" method="post">
+        <button type="submit" class="btn btn-danger w-100">Eliminar</button>
+    </form>
+</div>
 
 </body>
 </html>
