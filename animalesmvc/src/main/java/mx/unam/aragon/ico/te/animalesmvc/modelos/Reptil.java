@@ -2,6 +2,14 @@ package mx.unam.aragon.ico.te.animalesmvc.modelos;
 
 import jakarta.persistence.*;
 
+/**
+ * Autora: Andrea Marcela Cáceres Avitia (Temas especiales de computación I 2025-II)
+ * Proyecto: CRUD Spring MVC. Animales del mundo      Fecha: 05/06/2025
+ * Archivo: Reptil.java
+ * Descripción: Clase de entidad JPA que representa a un mamífero dentro del sistema.
+ *              Mapea la tabla "reptiles" e incluye atributos relevantes.
+ */
+
 @Entity
 @Table(name = "reptiles")
 public class Reptil {

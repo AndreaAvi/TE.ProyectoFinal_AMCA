@@ -10,6 +10,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Autora: Andrea Marcela Cáceres Avitia (Temas especiales de computación I 2025-II)
+ * Proyecto: CRUD Spring MVC. Animales del mundo   Fecha: 05/06/2025
+ * Clase: ReptilController.java
+ * Descripción: Clase controladora responsable de gestionar las solicitudes relacionadas con "Reptiles".
+ * Proporciona endpoints para operaciones CRUD y funcionalidades como renderizar páginas de menú y listar.
+ * Proporciona un manejo de errores simple.
+ */
+
+
 @Controller
 @RequestMapping("/reptiles")
 public class ReptilController {
