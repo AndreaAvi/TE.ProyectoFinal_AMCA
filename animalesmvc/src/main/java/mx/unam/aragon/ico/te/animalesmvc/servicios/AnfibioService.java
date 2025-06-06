@@ -26,6 +26,7 @@ public class AnfibioService {
     public boolean guardarAnfibio(Anfibio anfibio) {
         Anfibio resultado = anfibioRepository.save(anfibio);
         return resultado != null;
+
     }
 
     // READ - Obtener uno por ID
