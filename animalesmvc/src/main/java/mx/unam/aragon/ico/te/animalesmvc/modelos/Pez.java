@@ -1,3 +1,10 @@
+/**
+ * Autora: Andrea Marcela Cáceres Avitia (Temas especiales de computación I 2025-II)
+ * Proyecto: CRUD Spring MVC. Animales del mundo      Fecha: 05/06/2025
+ * Archivo: Pez.java
+ * Descripción: Clase de entidad JPA que representa a un pez dentro del sistema.
+ *              Mapea la tabla "peces" e incluye atributos relevantes.
+ */
 package mx.unam.aragon.ico.te.animalesmvc.modelos;
 
 import jakarta.persistence.*;
